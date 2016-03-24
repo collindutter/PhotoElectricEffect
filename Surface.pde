@@ -1,8 +1,8 @@
 public class Surface {
    private SurfaceType type;
 
-   private Surface(SurfaceType t) {
-      type = t;
+   private Surface() {
+      type = SurfaceType.BRONZE;
    }
 
    public void render() {

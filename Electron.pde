@@ -3,7 +3,8 @@ public class Electron extends Particle {
       super(pos, vel);
    }
 
-   public void render() {
+   public boolean render() {
+      return true;
    }
 
    private void drawElectron() {
