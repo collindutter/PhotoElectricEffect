@@ -1,5 +1,5 @@
 public enum SurfaceType {
-   IRON, 
-   BRONZE, 
-   MYTHRAL
+   BRONZE,
+   IRON,
+   MYTHRAL;
 }

@@ -1,15 +1,21 @@
-public abstract class Particle {
+public class Particle {
    protected PVector pos, vel;
+   protected final int RADIUS = 7;
 
-   public Particle(PVector pos, PVector vel) {
+   public Particle(PVector pos) {
       this.pos = pos;
-      this.vel = vel;
+      vel = null;
    }
 
-   public abstract boolean render();
+   public boolean render() {
+      pos.add(vel);
+
+      return !offScreen();
+   }
 
    public boolean offScreen() {
-      return pos.x < 0 || pos.x > width || pos.y < 0 || pos.y > height;
+      return pos.x < -RADIUS || pos.x > width + RADIUS
+       || pos.y < -RADIUS || pos.y > height + RADIUS;
    }
    
 }
