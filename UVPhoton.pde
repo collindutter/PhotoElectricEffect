@@ -1,7 +1,7 @@
 public class UVPhoton extends Photon {
    public UVPhoton(PVector pos) {
       super(pos);
-      energy = 1000;
+      energy = 1001;
    }
 
    public void drawPhoton() {

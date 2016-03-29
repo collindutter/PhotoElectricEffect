@@ -7,7 +7,7 @@ public void setup() {
    init();
 }
 
-public  void init() {
+public void init() {
    light = new LightSource();
    surface = new Surface();
    particles = new ArrayList<Particle>();
@@ -26,7 +26,7 @@ public void draw() {
 } 
 
 public void addPhoton() {
-   PVector pos = new PVector(10, 10);
+   PVector pos = new PVector(10 + random(-5, 5), 10 + random(-5, 5));
 
    switch (light.photonType()) {
    case LightSource.VISIBLE:
@@ -55,4 +55,13 @@ public void mousePressed() {
       light.nextPhotonType();
    else
       light.toggleLight();
+}
+
+public void keyPressed() {
+   if (key == CODED) {
+      if (keyCode == UP)
+         light.increaseFireRate();
+      else if (keyCode == DOWN)
+         light.decreaseFireRate();
+   }
 }

@@ -1,20 +1,26 @@
 public class LightSource {
    private boolean lightOn;
    private int photonType;
+   private int lastFire;
+   private int fireSpacing;
    public static final int VISIBLE = 0,
-                  IR = 1,
-                  UV = 2;
+                           IR = 1,
+                           UV = 2;
 
    public LightSource() {
       lightOn = true;
       photonType = 0;
+      fireSpacing = 100;
+      lastFire = millis();
    }
 
    public void render() {
       drawLight();
 
-      if (lightOn && frameCount % 60 == 0)
+      if (lightOn && millis() - lastFire >= fireSpacing) {
+         lastFire = millis();
          firePhoton();
+      }
    }
 
    private void drawLight() {
@@ -34,5 +40,13 @@ public class LightSource {
 
    public int photonType() {
       return photonType;
+   }
+
+   public void increaseFireRate() {
+      fireSpacing -= 5; 
+   }
+
+   public void decreaseFireRate() {
+      fireSpacing += 5;
    }
 }

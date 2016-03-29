@@ -3,7 +3,7 @@ public class Surface {
                      IRON = 1,
                      MYTHRAL = 2;
    private int type;
-   private final int[] ENERGY_THRESHOLDS = {9000, 1000, 10000};
+   private final int[] ENERGY_THRESHOLDS = {1000, 5000, 10000};
    private final int HEIGHT = 50;
    private final int Y_COORD = height - HEIGHT;
 
@@ -16,7 +16,6 @@ public class Surface {
    }
 
    private void drawSurface() {
-      /*println(frameCount, type);*/
       switch(type) {
       case BRONZE:
          fill(#996633);

@@ -1,7 +1,7 @@
 public class VisiblePhoton extends Photon {
    public VisiblePhoton(PVector pos) {
       super(pos);
-      energy = 1000;
+      energy = 5001;
    }
 
    public void drawPhoton() {
