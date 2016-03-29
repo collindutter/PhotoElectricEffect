@@ -7,6 +7,9 @@ public class LightSource {
                            IR = 1,
                            UV = 2;
 
+   private int[][] lightVertices = {{0, 5}, {40, 25}, {40, -25}, {0, -5}, {0, 5}};
+   private int[][] lightBeamVertices = {{0, 5}, {80, 50}, {80, -50}, {0, -5}, {0, 5}};
+
    public LightSource() {
       lightOn = true;
       photonType = 0;
@@ -24,7 +27,28 @@ public class LightSource {
    }
 
    private void drawLight() {
+      pushMatrix();
+      translate(5, 5);
+      translate(0, 5);
+      scale(1.5);
+      rotate(radians(55));
+      translate(0, -5);
+      fill(#ffff00, 128);
+      stroke(#ffff00);
+      beginShape();
+      for (int ndx = 0; ndx < lightVertices.length; ndx++)
+         vertex(lightBeamVertices[ndx][0], lightBeamVertices[ndx][1]);
+      endShape();
+
+      fill(#cccccc);
+      stroke(#cccccc);
+      beginShape();
+      for (int ndx = 0; ndx < lightVertices.length; ndx++)
+         vertex(lightVertices[ndx][0], lightVertices[ndx][1]);
+      endShape();
+      popMatrix();
    }
+
 
    public void firePhoton() {
       addPhoton();

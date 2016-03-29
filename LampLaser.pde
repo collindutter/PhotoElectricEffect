@@ -16,17 +16,17 @@ public void init() {
 public void draw() {
    background(0);
 
-   light.render();
    surface.render();
 
    for (int ndx = 0; ndx < particles.size(); ndx++) {
       if (!particles.get(ndx).render())
          particles.remove(ndx);
    }
+   light.render();
 } 
 
 public void addPhoton() {
-   PVector pos = new PVector(10 + random(-5, 5), 10 + random(-5, 5));
+   PVector pos = new PVector(20 + random(-5, 5), 20 + random(-5, 5));
 
    switch (light.photonType()) {
    case LightSource.VISIBLE:
