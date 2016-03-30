@@ -18,5 +18,7 @@ public abstract class Photon extends Particle {
       return !offScreen();
    }
 
-   public abstract void drawPhoton();
+   public void drawPhoton() {
+      /*filter(blur);*/
+   }
 }

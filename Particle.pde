@@ -9,7 +9,6 @@ public class Particle {
 
    public boolean render() {
       pos.add(vel);
-
       return !offScreen();
    }
 

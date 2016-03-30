@@ -5,6 +5,7 @@ public class VisiblePhoton extends Photon {
    }
 
    public void drawPhoton() {
+      super.drawPhoton();
       fill(#ff9900);
       stroke(#ffff00);
       ellipse(pos.x, pos.y, RADIUS * 2, RADIUS * 2);
