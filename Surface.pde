@@ -36,7 +36,7 @@ public class Surface {
    }
 
    public void nextSurfaceType() {
-      type = (type < ENERGY_THRESHOLDS.length - 1 ? type + 1: 0);
+      type = (type < ENERGY_THRESHOLDS.length - 1 ? type + 1 : 0);
    }
 
    public void setSurfaceType(int t) {

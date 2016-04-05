@@ -1,6 +1,10 @@
+/** The light source */
 public LightSource light;
+/** The surface which to fire photons at */
 public Surface surface;
+/** A list of all the active particles */
 public ArrayList<Particle> particles;
+/** A blur shader used for fancy GL effects */
 public PShader blur;
 
 public void setup() {
@@ -9,14 +13,30 @@ public void setup() {
    init();
 }
 
+/**
+ * Initiate items in sketch.
+ */
 public void init() {
    light = new LightSource();
    surface = new Surface();
    particles = new ArrayList<Particle>();
 }
 
+/**
+ * Draw all particles, the light source, the surface, and handle
+ * user inputs.
+ */
 public void draw() {
    background(0);
+
+   if (keyPressed) {
+      if (key == CODED) {
+         if (keyCode == UP)
+            light.increaseFireRate();
+         else if (keyCode == DOWN)
+            light.decreaseFireRate();
+      }
+   }
 
    for (int ndx = 0; ndx < particles.size(); ndx++)
       if (!particles.get(ndx).render())
@@ -25,6 +45,10 @@ public void draw() {
    surface.render();
 } 
 
+/**
+ * Add new photon to the list of photons depending
+ * on what mode the light is currently in.
+ */
 public void addPhoton() {
    PVector pos = new PVector(20 + random(-5, 5), 20 + random(-5, 5));
 
@@ -41,6 +65,11 @@ public void addPhoton() {
    }
 }
 
+/**
+ * Add new electron to the list of electrons.
+ *
+ * @param pos position at which to add electron
+ */
 public void addElectron(PVector pos) {
    particles.add(new Electron(pos));
 }
@@ -55,13 +84,4 @@ public void mousePressed() {
       light.nextPhotonType();
    else
       light.toggleLight();
-}
-
-public void keyPressed() {
-   if (key == CODED) {
-      if (keyCode == UP)
-         light.increaseFireRate();
-      else if (keyCode == DOWN)
-         light.decreaseFireRate();
-   }
 }

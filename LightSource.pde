@@ -10,6 +10,10 @@ public class LightSource {
    private int[][] lightVertices = {{0, 5}, {40, 17}, {40, -14}, {0, -5}, {0, 5}};
    private int[][] lightBeamVertices = {{0, 5}, {231, 70}, {329, -70}, {0, -5}, {0, 5}};
 
+   /**
+    * Create a turned on LightSource firing visible light firing at
+    * regular speed.
+    */
    public LightSource() {
       lightOn = true;
       photonType = 0;
@@ -17,6 +21,9 @@ public class LightSource {
       lastFire = millis();
    }
 
+   /**
+    * Render the light source, and handle photon firing.
+    */
    public void render() {
       drawLight();
 
@@ -26,6 +33,9 @@ public class LightSource {
       }
    }
 
+   /**
+    * Render the light source model.
+    */
    private void drawLight() {
       pushMatrix();
 
@@ -54,26 +64,44 @@ public class LightSource {
       popMatrix();
    }
 
+   /**
+    * Fire a sigle photon from the light source.
+    */
    public void firePhoton() {
       addPhoton();
    }
 
+   /**
+    * Toggle the light's state between on and off.
+    */
    public void toggleLight() {
       lightOn = !lightOn;
    }
 
+   /**
+    * Iterate the light's photon type to the 'next' type.
+    */
    public void nextPhotonType() {
       photonType = (photonType < 2 ? photonType + 1 : 0);
    }
 
+   /**
+    * Return the current photon type.
+    */
    public int photonType() {
       return photonType;
    }
 
+   /**
+    * Increase the fire rate at which photons fire from light.
+    */
    public void increaseFireRate() {
       fireSpacing -= 5; 
    }
 
+   /**
+    * Decrease the fire rate at which photons fire from light.
+    */
    public void decreaseFireRate() {
       fireSpacing += 5;
    }
