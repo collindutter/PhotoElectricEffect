@@ -6,8 +6,8 @@ public class UVPhoton extends Photon {
 
    public void drawPhoton() {
       super.drawPhoton();
-      fill(#cc66ff);
-      stroke(#ff66ff);
+      fill(255);
+      stroke(0);
       ellipse(pos.x, pos.y, RADIUS * 2, RADIUS * 2);
    }
 }

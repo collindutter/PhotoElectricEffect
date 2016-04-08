@@ -56,9 +56,6 @@ public void addPhoton() {
    case LightSource.VISIBLE:
       particles.add(new VisiblePhoton(pos));
       break;
-   case LightSource.IR:
-      particles.add(new IRPhoton(pos));
-      break;
    case LightSource.UV:
       particles.add(new UVPhoton(pos));
       break;
