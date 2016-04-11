@@ -1,5 +1,6 @@
 public abstract class Photon extends Particle {
    protected int energy;
+   protected color fillColor;
 
    public Photon(PVector pos) {
       super(pos);

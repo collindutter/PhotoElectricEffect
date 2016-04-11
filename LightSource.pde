@@ -6,6 +6,7 @@ public class LightSource {
   public static final int VISIBLE = 0,
          UV = 1;
 
+  private color filterColor;
   private int[][] lightVertices = {{0, 5}, {40, 17}, {40, -14}, {0, -5}, {0, 5}};
   private int[][] lightBeamVertices = {{0, 5}, {231, 70}, {329, -70}, {0, -5}, {0, 5}};
 
@@ -18,6 +19,7 @@ public class LightSource {
     photonType = 0;
     fireSpacing = 100;
     lastFire = millis();
+    filterColor = color(0);
   }
 
   /**
@@ -44,6 +46,7 @@ public class LightSource {
     rotate(radians(55));
     translate(0, -5);
 
+    // the light beam
     if (lightOn) {
       fill(#ffff00, 50);
       stroke(#ffff00);
@@ -53,13 +56,17 @@ public class LightSource {
       endShape();
     }
 
+
+    if (lightOn) {
+      fill(filterColor);
+      stroke(filterColor);
+      strokeWeight(3);
+      line(lightVertices[1][0] + 2, lightVertices[1][1] + 15, lightVertices[1][0] + 2, lightVertices[2][1] - 15);
+      strokeWeight(1);
+    }
+
     fill(#cccccc);
     stroke(#cccccc);
-
-    strokeWeight(3);
-    line(lightVertices[1][0] + 2, lightVertices[1][1] + 15, lightVertices[1][0] + 2, lightVertices[2][1] - 15);
-    strokeWeight(1);
-
     beginShape();
     for (int ndx = 0; ndx < lightVertices.length; ndx++)
       vertex(lightVertices[ndx][0], lightVertices[ndx][1]);
@@ -70,6 +77,8 @@ public class LightSource {
 
   /**
    * Fire a sigle photon from the light source.
+   *
+   * @return photon that was fired
    */
   public void firePhoton() {
     addPhoton();
@@ -85,9 +94,9 @@ public class LightSource {
   /**
    * Iterate the light's photon type to the 'next' type.
    */
-    public void nextPhotonType() {
-      photonType = (photonType < 1 ? photonType + 1 : 0);
-    }
+  public void nextPhotonType() {
+    photonType = (photonType < 1 ? photonType + 1 : 0);
+  }
 
   /**
    * Return the current photon type.
@@ -99,14 +108,21 @@ public class LightSource {
   /**
    * Increase the fire rate at which photons fire from light.
    */
-    public void increaseFireRate() {
-      fireSpacing -= 5; 
-    }
+  public void increaseFireRate() {
+    fireSpacing -= 5; 
+  }
 
-    /**
-     * Decrease the fire rate at which photons fire from light.
-     */
+  /**
+   * Decrease the fire rate at which photons fire from light.
+   */
   public void decreaseFireRate() {
     fireSpacing += 5;
+  }
+
+  /**
+   * Set the filter color
+   */
+  public void setFilterColor(color c) {
+    filterColor = c;
   }
 }
