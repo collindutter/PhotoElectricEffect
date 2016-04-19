@@ -39,8 +39,10 @@ public void draw() {
     }
 
     for (int ndx = 0; ndx < particles.size(); ndx++)
-        if (!particles.get(ndx).render())
+        if (!particles.get(ndx).render()) {
             particles.remove(ndx);
+            ndx--;
+        }
     light.render();
     surface.render();
 } 
