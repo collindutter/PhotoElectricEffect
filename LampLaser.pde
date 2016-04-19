@@ -56,8 +56,23 @@ public void addPhoton() {
   Photon ph;
 
   switch (light.photonType()) {
-    case LightSource.VISIBLE:
-      ph = new VisiblePhoton(pos);
+    case LightSource.RED:
+      ph = new RedPhoton(pos);
+      particles.add(ph);
+      light.setFilterColor(ph.fillColor);
+      break;
+    case LightSource.GREEN:
+      ph = new GreenPhoton(pos);
+      particles.add(ph);
+      light.setFilterColor(ph.fillColor);
+      break;
+    case LightSource.BLUE:
+      ph = new BluePhoton(pos);
+      particles.add(ph);
+      light.setFilterColor(ph.fillColor);
+      break;
+    case LightSource.VIOLET:
+      ph = new VioletPhoton(pos);
       particles.add(ph);
       light.setFilterColor(ph.fillColor);
       break;
