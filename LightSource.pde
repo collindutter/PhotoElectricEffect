@@ -12,6 +12,7 @@ public class LightSource {
     private color filterColor;
     private int[][] lightVertices = {{0, 5}, {40, 17}, {40, -14}, {0, -5}, {0, 5}};
     private int[][] lightBeamVertices = {{0, 5}, {231, 70}, {329, -70}, {0, -5}, {0, 5}};
+    private color[] photonColors = {#ff3300, #66ff66, #33ccff, #cc66ff, 255};
 
     /**
      * Create a turned on LightSource firing visible light firing at
@@ -98,6 +99,7 @@ public class LightSource {
      */
     public void nextPhotonType() {
         photonType = (photonType < 4 ? photonType + 1 : 0);
+        filterColor = photonColors[photonType];
     }
 
     /**
